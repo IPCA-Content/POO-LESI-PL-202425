@@ -88,6 +88,63 @@ Welcome to the Object-Oriented Programming (OOP)! This repository contains pract
   - Project milestones and deadlines
   - Evaluation criteria
 
+## GitHub Basics Commands
+
+### Setting Up Git
+1. **Install Git**: Download and install Git from [git-scm.com](https://git-scm.com/).
+2. **Configure Git**:
+    ```sh
+    git config --global user.name "Your Name"
+    git config --global user.email "your.email@example.com"
+    ```
+
+### Basic Git Commands
+- **Initialize a Repository**:
+    ```sh
+    git init
+    ```
+- **Clone a Repository**:
+    ```sh
+    git clone https://github.com/username/repository.git
+    ```
+- **Check Repository Status**:
+    ```sh
+    git status
+    ```
+- **Add Changes to Staging Area**:
+    ```sh
+    git add <file>
+    git add .
+    ```
+- **Commit Changes**:
+    ```sh
+    git commit -m "Commit message"
+    ```
+- **Push Changes to Remote Repository**:
+    ```sh
+    git push origin main
+    ```
+- **Pull Changes from Remote Repository**:
+    ```sh
+    git pull origin main
+    ```
+- **Create a New Branch**:
+    ```sh
+    git checkout -b new-branch
+    ```
+- **Switch to a Branch**:
+    ```sh
+    git checkout branch-name
+    ```
+- **Merge a Branch**:
+    ```sh
+    git merge branch-name
+    ```
+
+### Collaboration Using GitHub
+- **Fork a Repository**: Click the "Fork" button on the repository's GitHub page.
+- **Create a Pull Request**: After making changes, go to the repository's GitHub page and click "New pull request".
+
 ## Practical Exercises (Expected Roadmap)
 
 ### Week 1: Setting Up
