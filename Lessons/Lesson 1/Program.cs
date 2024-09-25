@@ -8,6 +8,7 @@
 //    <author>Ernesto Casanova</author>​
 //-----------------------------------------------------------------
 using Lesson_1;
+using Lesson_1.Tests;
 using System;
 using System.Buffers;
 
@@ -29,6 +30,10 @@ namespace Lesson
 
             int z = Operations.Sum(2, 3);
             Console.WriteLine($"Sum = {z}");
+
+            OperationsTests.OperationsTests_TestSum_ReturnInt();
+            OperationsTests.OperationsTests_TestSum_ReturnDouble();
+            OperationsTests.OperationsTests_TestSub_ReturnSub();
         }
     }
 }
