@@ -3,7 +3,7 @@
 ################################################################################
 
 /Lessons/.vs
-/Lessons/Lesson 1/bin
-/Lessons/Lesson 1/obj
 /Lessons/Lessons/bin/Debug/net8.0
 /Lessons/Lessons/obj
+/Lessons/**/bin
+/Lessons/**/obj

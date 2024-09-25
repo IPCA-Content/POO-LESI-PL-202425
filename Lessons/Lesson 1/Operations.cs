@@ -16,8 +16,9 @@ using System.Threading.Tasks;
 
 namespace Lesson_1
 {
-    public static class Operations
+    public class Operations
     {
+        #region Functions
         /// <summary>
         /// Sum two numbers
         /// </summary>
@@ -50,6 +51,6 @@ namespace Lesson_1
         {
             return a - b;
         }
-
+        #endregion
     }
 }
