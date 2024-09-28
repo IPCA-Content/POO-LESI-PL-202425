@@ -9,8 +9,6 @@
 //-----------------------------------------------------------------
 using Lesson_1;
 using Lesson_1.Tests;
-using System;
-using System.Buffers;
 
 namespace Lesson
 {
