@@ -8,6 +8,8 @@
 //    <author>Ernesto Casanova</author>​
 //-----------------------------------------------------------------
 
+using Lesson_3.Tests;
+
 namespace Lesson_3
 {
     /// <summary>
@@ -47,6 +49,15 @@ namespace Lesson_3
             // using GetName() method
             string name = person_3.GetName();
             Console.WriteLine($"Name: {name}");
+
+            // Run tests
+            PersonTests.TestDefaultConstructor();
+            PersonTests.TestParameterizedConstructor();
+            PersonTests.TestGetAge();
+            PersonTests.TestGetName();
+            PersonTests.TestDisplayValue();
+            PersonTests.TestNameSetter();
+            PersonTests.TestAgeSetter();
 
             #endregion
         }
