@@ -19,27 +19,27 @@ namespace Lesson_3
         // https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names
 
         #region Private Properties
-        private string _name { get; set; }
-        private int _age { get; set; }
+        private string name { get; set; }
+        private int age { get; set; }
         #endregion
 
         #region Public Properties
         public string Name { get
             {
-                return this._name;
+                return this.name;
             }
             set
             {
                 if (value.Length > 0) // or another condition
                 {
-                    this._name = value;
+                    this.name = value;
                 }
             }
         }
         public int Age { 
             // if (user has permissions to see the age)
-            get { return this._age; } 
-            set { this._age = value; } 
+            get { return this.age; } 
+            set { this.age = value; } 
         }
         #endregion
 
@@ -49,8 +49,8 @@ namespace Lesson_3
         /// Class constructor without parameters
         /// </summary>
         public Person() {
-            this._age = 0;
-            this._name = "";
+            this.age = 0;
+            this.name = "";
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace Lesson_3
         /// <param name="age"></param>
         /// <param name="name"></param>
         public Person(int age, string name) {
-            this._age = age;
-            this._name = name;
+            this.age = age;
+            this.name = name;
         }
 
         #endregion
@@ -71,19 +71,19 @@ namespace Lesson_3
         /// Get the age of the person
         /// </summary>
         /// <returns></returns>
-        public int GetAge() { return this._age; }
+        public int GetAge() { return this.age; }
 
         /// <summary>
         /// Get the name of the person
         /// </summary>
         /// <returns></returns>
-        public string GetName() { return this._name; }
+        public string GetName() { return this.name; }
 
         /// <summary>
         /// Display the values of the person
         /// </summary>
         public void DisplayValue() {
-            Console.WriteLine($"Name: {this._name}, Age: {this._age}");
+            Console.WriteLine($"Name: {this.name}, Age: {this.age}");
         }
 
         #endregion
