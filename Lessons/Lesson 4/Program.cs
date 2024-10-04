@@ -23,7 +23,7 @@ namespace Lesson_4
         {
             #region Person
 
-            // Create a new person object
+            // Create a new person object and display values
             Person person = new Person("Alice", 30);
             person.DisplayValue();
 
