@@ -24,7 +24,7 @@ namespace Lesson_6
         /// <param name="args">string[]</param>
         static void Main(string[] args)
         {
-            #region Call my Code (New)
+            #region Call my Code
             // Create authors
             Author author1 = new Author("John Doe");
             Author author2 = new Author("Jane Smith");

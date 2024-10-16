@@ -25,14 +25,8 @@ public class Author: BaseClass
 
     public string Name
     {
-        get
-        {
-            return name;
-        }
-        set
-        {
-            name = value;
-        }
+        get => name;
+        set => name = value;
     }
 
     #endregion
