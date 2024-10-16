@@ -9,6 +9,7 @@
 //-----------------------------------------------------------------
 
 using Lesson_5.interfaces;
+using Utils;
 
 namespace Lesson_5;
 
@@ -80,7 +81,8 @@ public class Student: Person, ITest
     public override int CalculateAge(DateOnly birthDate)
     {
         // use the DLL here, call the function
-        return 0;
+        Operations op = new Operations();
+        return op.Age(birthDate);
     }
     
     /// <summary>
