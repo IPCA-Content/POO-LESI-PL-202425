@@ -5,6 +5,7 @@ namespace Lesson_Tests;
 [TestFixture]
 public class Lesson2Test
 {
+    #region Setup
     [SetUp]
     public void Setup()
     {
@@ -13,7 +14,9 @@ public class Lesson2Test
         // necessary configuration that the
         // test methods depend on.
     }
+    #endregion
 
+    #region Tests
     // Test method with multiple test cases
     [TestCase("hello", "olleh")]
     [TestCase("world", "dlrow")]
@@ -31,4 +34,5 @@ public class Lesson2Test
         // Assert
         Assert.That(result, Is.EqualTo(expected));
     }
+    #endregion
 }

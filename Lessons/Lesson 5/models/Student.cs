@@ -11,7 +11,7 @@
 using Lesson_5.interfaces;
 using Utils;
 
-namespace Lesson_5;
+namespace Lesson_5.models;
 
 /// <summary>
 /// Class Student that inherits from Person 
@@ -20,8 +20,10 @@ public class Student: Person, ITest
 {
     #region Private properties
     
-    public string studentId { get; set; }
-    public string course { get; set; }
+    private string studentId { get; set; }
+    private string course { get; set; }
+    
+    private Date date { get; set; }
     #endregion
 
     #region Public properties
@@ -43,21 +45,24 @@ public class Student: Person, ITest
     /// </summary>
     public Student()
     {
-        
+        studentId = "";
+        course = "";
+        date = new Date(); // DLL Class new instance
     }
 
     /// <summary>
     /// Constructor 
     /// </summary>
-    /// <param name="_name"></param>
-    /// <param name="_birthDate"></param>
-    /// <param name="_studentId"></param>
-    /// <param name="_course"></param>
-    public Student(string _name, DateOnly _birthDate, string _studentId, string _course)
-    : base(_name, _birthDate)
+    /// <param name="name"></param>
+    /// <param name="birthDate"></param>
+    /// <param name="studentId"></param>
+    /// <param name="course"></param>
+    public Student(string name, DateOnly birthDate, string studentId, string course)
+    : base(name, birthDate)
     {
-        studentId = _studentId;
-        course = _course;
+        this.studentId = studentId;
+        this.course = course;
+        date = new Date(); // DLL Class new instance
     }
     
     #endregion
@@ -80,9 +85,8 @@ public class Student: Person, ITest
     /// <returns>int</returns>
     public override int CalculateAge(DateOnly birthDate)
     {
-        // use the DLL here, call the function
-        Operations op = new Operations();
-        return op.Age(birthDate);
+        // reuse the DLL methods here, calling the function
+        return date.Age(birthDate);
     }
     
     /// <summary>

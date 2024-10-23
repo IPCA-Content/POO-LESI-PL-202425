@@ -3,13 +3,9 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
-        <RootNamespace>Lesson_6</RootNamespace>
+        <RootNamespace>Lesson_7</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Lesson 5\Lesson 5.csproj" />
-    </ItemGroup>
 
 </Project>

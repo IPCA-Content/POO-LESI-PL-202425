@@ -3,8 +3,9 @@
 /// <summary>
 /// Class Operations 
 /// </summary>
-public class Operations
+public class Date
 {
+    #region Public Methods
     /// <summary>
     /// Calculate Age base on date
     /// </summary>
@@ -14,7 +15,8 @@ public class Operations
     {
         DateOnly today = DateOnly.FromDateTime(DateTime.Now);
         int age = today.Year - date.Year;
-        if (today < date.AddYears(-age)) age--;
+        if (date > today.AddYears(-age)) age--;
         return age;
     }
+    #endregion
 }
