@@ -106,7 +106,7 @@ namespace Lesson_8
 
             string destinationNewLocationFilePath = "new_location/moving_example.txt";
 
-            if (File.Exists(sourceMovingFilePath))
+            if (File.Exists(sourceMovingFilePath) && !File.Exists(destinationNewLocationFilePath))
             {
                 File.Move(sourceMovingFilePath, destinationNewLocationFilePath);
                 Console.WriteLine("File moved.");
