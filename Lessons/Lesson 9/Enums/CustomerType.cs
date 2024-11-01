@@ -8,13 +8,13 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
-namespace Lesson_9.Interfaces;
+namespace Lesson_9.Enums;
 
 /// <summary>
-/// Interface Rental
+/// Enum Customer Type
 /// </summary>
-public interface IRental
+public enum CustomerType
 {
-    void CalculateRentalCost();
-    void PrintRentalSummary();
+    Regular,
+    Interstellar
 }

@@ -8,13 +8,16 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
-namespace Lesson_9.Interfaces;
+namespace Lesson_9.Enums;
 
 /// <summary>
-/// Interface Rental
+/// Enum Payment Method
 /// </summary>
-public interface IRental
+public enum PaymentMethod
 {
-    void CalculateRentalCost();
-    void PrintRentalSummary();
+    GalacticCredits,
+    InterstellarBankTransfer,
+    SpaceCoin,
+    Undefined,
+    // Add other payment methods as needed
 }

@@ -8,6 +8,7 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
+using Lesson_9.Enums;
 using Lesson_9.Interfaces;
 using Lesson_9.Models;
 
@@ -24,6 +25,20 @@ namespace Lesson_9
         /// <param name="args">string[]</param>
         static void Main(string[] args)
         {
+            // Exercício Aula
+            // -	Uma empresa de aluguer de naves espaciais permite que os clientes 
+            //      aluguem diferentes tipos de naves.
+            // -	Cada aluguer calcula o custo total com base no tipo de nave, 
+            //      distância até o destino e número de dias.
+            // -	O sistema inclui diferentes métodos de pagamento e suporta 
+            //      cliente interestelares.
+
+            #region Usage
+            
+            // Create customers
+            Customer lunarCustomer = new InterstellarCustomer("CUST001", "Neil Armstrong", PaymentMethod.GalacticCredits,0.10m);
+            Customer marsCustomer = new Customer("CUST002","Mark Watney", PaymentMethod.InterstellarBankTransfer, CustomerType.Regular);
+
             // Create spacecrafts for different destinations
             Spacecraft lunarShuttle = new LunarShuttle { Name = "Apollo 11", Capacity = 4, BaseRentalRate = 500m };
             Spacecraft marsExplorer = new MarsExplorer { Name = "Mars Rover", Capacity = 6, BaseRentalRate = 1500m };
@@ -33,8 +48,8 @@ namespace Lesson_9
             lunarRental.CalculateRentalCost();
             lunarRental.PrintRentalSummary();
 
-            // Process payment for the lunar rental
-            IPayment lunarPayment = new Payment { PaymentMethod = "Galactic Credits" };
+            // Process payment for the lunar rental with customer info
+            IPayment lunarPayment = new Payment(lunarCustomer.CustomerId, lunarCustomer.PreferredPaymentMethod);
             lunarPayment.ProcessPayment(((Rental)lunarRental).TotalCost);
 
             Console.WriteLine();
@@ -44,27 +59,29 @@ namespace Lesson_9
             marsRental.CalculateRentalCost();
             marsRental.PrintRentalSummary();
 
-            // Process payment for the Mars rental
-            IPayment marsPayment = new Payment { PaymentMethod = "Interstellar Bank Transfer" };
+            // Process payment for the Mars rental with customer info
+            IPayment marsPayment = new Payment(marsCustomer.CustomerId, marsCustomer.PreferredPaymentMethod);
             marsPayment.ProcessPayment(((Rental)marsRental).TotalCost);
+            #endregion
+            
+            #region OOP - Object Oriented Principles (Applyed in this example)
+            // Explanation of OOP Principles Used
+            //   - Encapsulation: The Rental class encapsulates the logic for
+            //      calculating rental costs and printing summaries, keeping this
+            //      logic contained and private to the class.
+            //   - Abstraction: The IRental and IPayment interfaces abstract rental
+            //      and payment functionalities, hiding implementation details and focusing
+            //      on "what" actions are available (renting and paying).
+            //   - Inheritance: LunarShuttle and MarsExplorer inherit from the
+            //      abstract Spacecraft class, sharing common properties like Name,
+            //      Capacity, and BaseRentalRate.
+            //   - Polymorphism: The Spacecraft class’s CalculateRentalPrice method
+            //      is overridden by each subclass (LunarShuttle and MarsExplorer)
+            //      to provide different pricing logic based on the spacecraft type.
+            //      The Payment class also supports multiple payment methods,
+            //      allowing flexibility in the way payments are processed.
+            #endregion
         }
     }
 }
-
-// Explanation of OOP Principles Used
-//   - Encapsulation: The Rental class encapsulates the logic for
-//      calculating rental costs and printing summaries, keeping this
-//      logic contained and private to the class.
-
-//   - Abstraction: The IRental and IPayment interfaces abstract rental
-//      and payment functionalities, hiding implementation details and focusing on "what" actions are available (renting and paying).
-//      Inheritance: LunarShuttle and MarsExplorer inherit from the
-//      abstract Spacecraft class, sharing common properties like Name,
-//      Capacity, and BaseRentalRate.
-
-//   - Polymorphism: The Spacecraft class’s CalculateRentalPrice method
-//      is overridden by each subclass (LunarShuttle and MarsExplorer)
-//      to provide different pricing logic based on the spacecraft type.
-//      The Payment class also supports multiple payment methods,
-//      allowing flexibility in the way payments are processed.
    
