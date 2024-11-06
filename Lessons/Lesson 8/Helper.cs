@@ -8,8 +8,6 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
-using System.Text;
-
 namespace Lesson_8;
 
 /// <summary>
@@ -27,32 +25,6 @@ public static class Helper
     {
         // Handle the buffer data here (e.g., processing or storing)
         Console.WriteLine($"Read {bytesRead} bytes");
-    }
-
-    /// <summary>
-    /// Generate Random Strings
-    /// </summary>
-    /// <param name="count"></param>
-    /// <param name="length"></param>
-    /// <returns>string[]</returns>
-    public static string[] GenerateRandomStrings(int count, int length)
-    {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        Random random = new Random();
-        string[] result = new string[count];
-
-        for (int i = 0; i < count; i++)
-        {
-            StringBuilder sb = new StringBuilder(length);
-            for (int j = 0; j < length; j++)
-            {
-                sb.Append(chars[random.Next(chars.Length)]);
-            }
-
-            result[i] = sb.ToString();
-        }
-
-        return result;
     }
     #endregion
 }

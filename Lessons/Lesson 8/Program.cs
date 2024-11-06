@@ -8,6 +8,9 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
+using System.Text;
+using System.Text.Json;
+
 namespace Lesson_8
 {
     /// <summary>
@@ -145,16 +148,21 @@ namespace Lesson_8
             //     - Less Efficient for Small Operations: If you’re reading or
             //     writing small amounts of data frequently, FileStream can be
             //     slower since each call triggers a system I/O operation.
-            //
+            
             string fileDatPath = "example.dat";
 
+            if (!File.Exists(fileDatPath))
+            {
+                File.Create(fileDatPath).Close();
+            }
+            
             // Writing bytes to a file
             using (FileStream fs = new FileStream(fileDatPath, FileMode.Create))
             {
                 byte[] data = { 0x1, 0x2, 0x3, 0x4 };
                 fs.Write(data, 0, data.Length);
             }
-
+            
             // Reading bytes from a file
             using (FileStream fs = new FileStream(fileDatPath, FileMode.Open))
             {
@@ -166,6 +174,62 @@ namespace Lesson_8
                     Console.Write($"{b:X} ");
                 }
             }
+            
+            // How to write and read bytes array
+            // and show text
+
+            // Step 1: Write a byte array to a file
+            // "Hello World" in ASCII
+            byte[] dataToWrite = { 0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x20, 0x57, 0x6F, 0x72, 0x6C, 0x64 }; 
+
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                fs.Write(dataToWrite, 0, dataToWrite.Length);
+                Console.WriteLine("Data written to file.");
+            }
+
+            // Step 2: Read the byte array back from the file
+            byte[] dataRead;
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                dataRead = new byte[fs.Length];
+                fs.Read(dataRead, 0, dataRead.Length);
+            }
+
+            // Step 3: Display the data in hexadecimal format
+            Console.WriteLine("Hexadecimal representation:");
+            foreach (byte b in dataRead)
+            {
+                Console.Write($"{b:X2} ");
+            }
+            Console.WriteLine();
+
+            // Step 4: Display the data as text
+            string text = Encoding.ASCII.GetString(dataRead);
+            Console.WriteLine("Text representation:");
+            Console.WriteLine(text);
+            
+            // Step 5: Display encoding as UTF8
+            string message = "Hello World";
+            byte[] utf8Bytes = Encoding.UTF8.GetBytes(message);
+
+            // Print the byte array in hexadecimal format
+            Console.WriteLine("UTF-8 Byte Array:");
+            foreach (byte b in utf8Bytes)
+            {
+                Console.Write($"{b:X2} ");
+            }
+
+            #region ASCII vs UTF-8 Encoding
+            // - ASCII
+            //     Limited Characters: ASCII is a 7-bit encoding that supports only 128 characters, which include English letters (A-Z, a-z), numbers (0-9), and some basic symbols (like punctuation).
+            //     Smaller Size: Since ASCII characters are just 7 bits (or 1 byte when stored), it’s very compact for simple text.
+            //     Usage: ASCII is ideal if you're working only with plain English text without special characters.
+            // - UTF-8
+            //     Supports Many Languages: UTF-8 is a variable-length encoding that can represent every character in the Unicode standard. This includes characters from almost all languages, symbols, and even emojis.
+            //     Backward Compatible with ASCII: UTF-8 uses 1 byte for ASCII characters, so any valid ASCII text is also valid UTF-8. But UTF-8 can also use up to 4 bytes to encode more complex characters.
+            //     Usage: UTF-8 is a good choice when you need to support a range of languages, special symbols, or emojis, which are beyond ASCII’s limitations. UTF-8 is the standard encoding for most of the web.
+            #endregion
 
             #endregion
 
@@ -201,7 +265,7 @@ namespace Lesson_8
             // Instead of reading or writing small chunks directly to the disk,
             // BufferedStream accumulates data in memory up to a specified buffer
             // size and then performs the operation in larger, more efficient chunks.
-            //
+            
             //     - Reduced I/O Operations: BufferedStream only interacts with
             //       the underlying stream when the buffer is full (for writes)
             //       or needs to be refilled (for reads), reducing the frequency
@@ -213,7 +277,7 @@ namespace Lesson_8
             //       and should be set based on the workload and system capabilities.
             //       Larger buffers generally offer better performance up to a
             //       certain limit.
-            //
+            
             string largeFilePath = "largeFile.txt";
             if (!File.Exists(largeFilePath))
             {
@@ -242,16 +306,18 @@ namespace Lesson_8
             {
                 File.Create(largeDataFilePath).Close();
             }
+
+            Utils.String helper = new Utils.String(); // DLL
             
             int numberOfStrings = 1000000; // Number of random strings to generate
             int stringLength = 10; 
-            string[] randomStrings = Helper.GenerateRandomStrings(numberOfStrings, stringLength);
+            string[] randomStrings = helper.RandomStrings(numberOfStrings, stringLength);
 
             // Example of using the generated strings, such as writing to a file or displaying
             File.WriteAllLines(largeDataFilePath, randomStrings);
             
-            long offset = 0; // Start position
-            int sliceSize = 1024; // 1 KB per slice
+            long offset = 0;        // Start position
+            int sliceSize = 1024;   // 1 KB per slice
 
             using (FileStream fs = new FileStream(largeDataFilePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
@@ -272,6 +338,50 @@ namespace Lesson_8
 
             #endregion
 
+            #region 12. Serialize and Deserialize file List<Person>
+            
+            Person person = new Person
+            {
+                Name = "Alice", Age = 30, Profile = 4
+            };
+            
+            string fileName = "personLesson.json";
+
+            // Serialize one Person to JSON
+            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonString = JsonSerializer.Serialize(person, options);
+            File.WriteAllText(fileName, jsonString);
+            Console.WriteLine("Serialization to JSON complete.");
+
+            // Deserialize one Person from JSON
+            string readJsonString = File.ReadAllText(fileName);
+            Person deserializedPerson = JsonSerializer.Deserialize<Person>(readJsonString);
+            Console.WriteLine(deserializedPerson.Name);
+            
+            string fileNamePersons = "personsLesson.json";
+
+            List<Person> persons = new List<Person>
+            {
+                new Person { Name = "Alice", Age = 30, Profile = 4},
+                new Person { Name = "Joana", Age = 30}
+            };
+            
+            // Serialize the list of people to JSON
+            string jsonPersonsString = JsonSerializer.Serialize(persons, options);
+            File.WriteAllText(fileNamePersons, jsonPersonsString);
+            Console.WriteLine("Serialization to JSON complete.");
+
+            // Deserialize the list of people from JSON
+            string readJsonStrings = File.ReadAllText(fileNamePersons);
+            List<Person> deserializedPersons = JsonSerializer.Deserialize<List<Person>>(readJsonStrings);
+
+            Console.WriteLine("Deserialization from JSON complete.");
+            foreach (Person p in deserializedPersons)
+            {
+                Console.WriteLine($"Name: {p.Name}, Age: {p.Age}");
+            }
+            #endregion
+            
             #endregion
         }
     }

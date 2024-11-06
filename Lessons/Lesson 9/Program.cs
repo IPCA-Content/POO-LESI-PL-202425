@@ -32,7 +32,17 @@ namespace Lesson_9
             //      distância até o destino e número de dias.
             // -	O sistema inclui diferentes métodos de pagamento e suporta 
             //      cliente interestelares.
-
+            
+            // Or EN
+            
+            // - A spacecraft rental company allows customers to
+            //      rent different types of spacecraft.
+            // - Each rental calculates the total cost based on
+            //      the type of spacecraft, distance to destination,
+            //      and number of days.
+            // - The system includes different payment methods
+            //      and supports interstellar customers.
+            
             #region Usage
             
             // Create customers

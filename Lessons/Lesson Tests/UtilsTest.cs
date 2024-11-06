@@ -5,7 +5,7 @@ namespace Lesson_Tests;
 [TestFixture]
 public class UtilsTest
 {
-    #region Propreties
+    #region Properties
 
     private Date date;
     #endregion
