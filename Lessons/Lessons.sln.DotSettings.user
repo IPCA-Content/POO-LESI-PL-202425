@@ -33,7 +33,5 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=960ff27e_002D0dc6_002D4aad_002D9d85_002Dd001082ffacd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestAge #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::2071C3AB-749C-489A-A28D-62A395ED0970::net8.0::Lesson_Tests.RandomStringTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Project Location="/Users/casanova/RiderProjects/POO-LESI-PL-202425/Lessons/Lesson Tests" Presentation="&amp;lt;Lesson Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
