@@ -1,4 +1,4 @@
-# LESIPL 202425 Object-Oriented Programming (OOP) Course (Original plan)
+# LESIPL 202425 Object-Oriented Programming (OOP)
 
 Welcome to the Object-Oriented Programming (OOP)! This repository contains practical exercises and resources for the full semester course.
 
