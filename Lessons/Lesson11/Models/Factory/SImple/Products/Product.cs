@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------
 
-namespace Lesson10.Models;
+namespace Lesson11.Models;
 
 /// <summary>
 /// Class

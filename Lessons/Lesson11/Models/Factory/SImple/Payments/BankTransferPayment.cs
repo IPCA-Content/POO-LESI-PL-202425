@@ -8,9 +8,9 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
-using Lesson10.Interfaces;
+using Lesson11.Interfaces;
 
-namespace Lesson10.Models.Payments;
+namespace Lesson11.Models.Payments;
 
 /// <summary>
 /// Class

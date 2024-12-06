@@ -8,23 +8,17 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
-namespace Lesson11.Enums;
+namespace Lesson11.OtherTopics.Generics;
 
 /// <summary>
-/// Enum
+/// Class Food
 /// </summary>
-public enum PaymentType
+public class Food
 {
-    /// <summary>
-    /// Credit card
-    /// </summary>
-    CreditCard,
-    /// <summary>
-    /// PayPal
-    /// </summary>
-    PayPal,
-    /// <summary>
-    /// Bank Transfer
-    /// </summary>
-    BankTransfer
+    #region Public Properties
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public int Calories { get; set; }
+    #endregion
 }

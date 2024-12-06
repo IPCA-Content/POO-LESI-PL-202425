@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------
 
-using Lesson10.Enums;
-using Lesson10.Interfaces;
+using Lesson11.Enums;
+using Lesson11.Interfaces;
 
-namespace Lesson10.Models.Payments;
+namespace Lesson11.Models.Payments;
 
 /// <summary>
 /// Class 

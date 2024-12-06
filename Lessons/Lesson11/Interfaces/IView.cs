@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------
 
-namespace Lesson10.Interfaces;
+namespace Lesson11.Interfaces;
 
 /// <summary>
 /// Interface

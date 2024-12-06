@@ -8,7 +8,7 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
-namespace Lesson10.Models;
+namespace Lesson11.Models.Singleton;
 
 /// <summary>
 /// Class Singleton

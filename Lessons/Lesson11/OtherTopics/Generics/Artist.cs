@@ -8,23 +8,15 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
-namespace Lesson11.Enums;
+namespace Lesson11.OtherTopics.Generics;
 
 /// <summary>
-/// Enum
+/// Class Artist
 /// </summary>
-public enum PaymentType
+public class Artist
 {
-    /// <summary>
-    /// Credit card
-    /// </summary>
-    CreditCard,
-    /// <summary>
-    /// PayPal
-    /// </summary>
-    PayPal,
-    /// <summary>
-    /// Bank Transfer
-    /// </summary>
-    BankTransfer
+    #region Public Properties
+    public int Id { get; set; }
+    public string Name { get; set; }
+    #endregion
 }

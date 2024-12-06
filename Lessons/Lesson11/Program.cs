@@ -8,14 +8,16 @@
 //    <author>Ernesto Casanova</author>
 //-----------------------------------------------------------------
 
-using Lesson10.Enums;
-using Lesson10.Interfaces;
-using Lesson10.Models;
-using Lesson10.Models.Facade.View;
-using Lesson10.Models.Payments;
+using Lesson11.Enums;
+using Lesson11.OtherTopics.Generics;
+using Lesson11.Interfaces;
+using Lesson11.Models;
+using Lesson11.Models.Singleton;
+using Lesson11.Models.Facade.View;
+using Lesson11.Models.Payments;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Lesson10
+namespace Lesson11
 {
     /// <summary>
     /// Summary description for Lesson.
@@ -153,6 +155,68 @@ namespace Lesson10
             //  - Facade Pattern: The Facade pattern by centralizing the rendering
             // of multiple view components into a single interface (PageRenderer)
             // that the client can use easily.
+            
+            # region 5. Generics List Manager (Artist)
+            // Create a ListManager for Artists
+            ListManager<Artist> artistManager = new ListManager<Artist>();
+
+            // Add Artists
+            artistManager.Add(new Artist { Id = 1, Name = "A" });
+            artistManager.Add(new Artist { Id = 2, Name = "B" });
+
+            // Get all artists
+            IEnumerable<Artist> artists = artistManager.GetAll();
+            Console.WriteLine("Artists:");
+            foreach (Artist artist in artists)
+            {
+                Console.WriteLine($"ID: {artist.Id}, Name: {artist.Name}");
+            }
+
+            // Find a artist by name
+            IEnumerable<Artist> foundArtists = artistManager.Find(p => p.Name.Contains("A"));
+            Console.WriteLine("\nFound Artists:");
+            foreach (Artist artist in foundArtists)
+            {
+                Console.WriteLine($"ID: {artist.Id}, Name: {artist.Name}");
+            }
+
+            // Count artists
+            Console.WriteLine($"\nTotal Artists: {artistManager.Count}");
+
+            #endregion
+            
+            #region 6. Generics List Manager (Food)
+            // Create a ListManager for Food
+            ListManager<Food> foodManager = new ListManager<Food>();
+
+            // Add Food items
+            foodManager.Add(new Food { Id = 1, Name = "Pizza", Calories = 100});
+            foodManager.Add(new Food { Id = 2, Name = "Burger", Calories = 30});
+
+            // Get all Food items
+            IEnumerable<Food> foods = foodManager.GetAll();
+            Console.WriteLine("Foods:");
+            foreach (Food food in foods)
+            {
+                Console.WriteLine($"ID: {food.Id}, Name: {food.Name}, Calories: {food.Calories}");
+            }
+
+            // Find a Food item by name
+            IEnumerable<Food> foundFoods = foodManager.Find(f => f.Name.Contains("Pizza"));
+            Console.WriteLine("\nFound Foods:");
+            foreach (Food food in foundFoods)
+            {
+                Console.WriteLine($"ID: {food.Id}, Name: {food.Name}");
+            }
+            
+            // Calculate the average calories
+            double averageCalories = foodManager.GetAll().Average(f => f.Calories);
+
+            Console.WriteLine($"\nAverage Calories: {averageCalories:F2}");
+
+            // Count Food items
+            Console.WriteLine($"\nTotal Foods: {foodManager.Count}");
+            #endregion
         }
         
         //Dependency Injection with Microsoft.Extentions NuGet

@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------
 
-using Lesson10.Interfaces;
+using Lesson11.Interfaces;
 
-namespace Lesson10.Models;
+namespace Lesson11.Models;
 
 /// <summary>
 /// Class
